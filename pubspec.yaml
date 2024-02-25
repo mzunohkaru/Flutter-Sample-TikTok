@@ -1,0 +1,71 @@
+name: tiktok_clone
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+
+
+  # Firebase
+  firebase_core: any
+  firebase_auth: any
+  cloud_firestore: any
+  firebase_storage: any
+
+  # 状態管理
+  flutter_riverpod: any
+  flutter_hooks: any
+  hooks_riverpod: any
+
+  # UI
+  font_awesome_flutter:
+  flex_color_scheme: any
+  intl: any
+
+  freezed_annotation: any
+  json_annotation: any
+
+  # ログ
+  logger: any
+
+  # Cache
+  cached_network_image: any
+
+  # ファイル
+  image_picker: any
+  timeago: any
+  video_compress: ^3.1.2
+  video_player: any
+
+  # サードパーティー
+  google_sign_in: ^6.2.1
+  sign_in_with_apple: ^5.0.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+  build_runner: any
+  riverpod_annotation: any
+  riverpod_generator: any
+  freezed: any
+  json_serializable: any
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/

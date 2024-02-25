@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "706772634137",
+    "project_id": "flutter-sns-basic",
+    "storage_bucket": "flutter-sns-basic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706772634137:android:70d32d2425a809265e3888",
+        "android_client_info": {
+          "package_name": "com.example.tiktok_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706772634137-kd8n7m9adhpce4lli811aop0esuddea7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKMBNKcRGNu-aZ4C-pzQKrseYKv-rtN-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706772634137-kd8n7m9adhpce4lli811aop0esuddea7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
