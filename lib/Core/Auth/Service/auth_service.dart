@@ -5,21 +5,21 @@ import 'package:tiktok_clone/Core/Auth/Service/auth_error.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
 
 class AuthService {
-  AuthService._privateConstructor();
+  // AuthService._privateConstructor();
 
-  static final AuthService instance = AuthService._privateConstructor();
+  // static final AuthService instance = AuthService._privateConstructor();
 
-  factory AuthService() {
-    return instance;
-  }
+  // factory AuthService() {
+  //   return instance;
+  // }
 
-  Future<String?> login(
+  Future login(
       {required String email, required String password}) async {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
   }
 
-  Future<String?> signUp({
+  Future signUp({
     required String email,
     required String username,
     required String address,

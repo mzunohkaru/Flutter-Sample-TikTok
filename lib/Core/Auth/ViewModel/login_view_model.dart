@@ -10,6 +10,7 @@ class LoginViewModel {
     } on FirebaseAuthException catch (e) {
       return getLoginErrorMessage(e.code);
     }
+    return null;
   }
 
   Future<String?> signInWithGoogle() async {
@@ -18,6 +19,7 @@ class LoginViewModel {
     } on FirebaseAuthException catch (e) {
       return getGoogleSignInLoginErrorMessage(e.code);
     }
+    return null;
   }
 
   Future<String?> signInWithApple() async {
@@ -26,5 +28,6 @@ class LoginViewModel {
     } on FirebaseAuthException catch (e) {
       return getAppleSignInErrorMessage(e.code);
     }
+    return null;
   }
 }

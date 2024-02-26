@@ -9,14 +9,12 @@ import 'package:tiktok_clone/Utils/constants.dart';
 import 'package:tiktok_clone/Widgets/video_player_item_widget.dart';
 
 class ConfirmView extends HookConsumerWidget {
-  final File videoFile;
   final String videoPath;
   final Function resetAndNavigateToFeed;
   final viewModel = UploadPostViewModel();
 
   ConfirmView(
       {super.key,
-      required this.videoFile,
       required this.videoPath,
       required this.resetAndNavigateToFeed});
 
@@ -61,15 +59,16 @@ class ConfirmView extends HookConsumerWidget {
                         ? () async {
                             isLoading.value = true;
 
-                            File videoThumbnail = await viewModel
-                                .createThumbnail(videoPath: videoPath);
+                            File videoThumbnailFile = await viewModel
+                                .createThumbnail(videoFile: File(videoPath));
 
                             isLoading.value = false;
 
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                 builder: (context) => UploadPostView(
-                                    videoThumbnail: videoThumbnail,
+                                    videoFile: File(videoPath),
+                                    videoThumbnailFile: videoThumbnailFile,
                                     resetAndNavigateToFeed:
                                         resetAndNavigateToFeed),
                               ),

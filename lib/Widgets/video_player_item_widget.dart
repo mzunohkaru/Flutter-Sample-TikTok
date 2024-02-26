@@ -14,6 +14,7 @@ class VideoPlayerItem extends StatefulWidget {
 
 class _VideoPlayerItemState extends State<VideoPlayerItem> {
   late VideoPlayerController videoPlayerController;
+  late bool isPause;
 
   @override
   void initState() {
@@ -25,7 +26,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
         videoPlayerController.setLooping(true);
       });
 
-    isIcon = false;
+    isPause = false;
   }
 
   @override
@@ -34,19 +35,14 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
     videoPlayerController.dispose();
   }
 
-//追加？？？？
-  bool isPlay = true;
-  bool isIcon = false;
-  void OnPause() {
+  void pause() {
     setState(() {
-      isPlay = !isPlay;
+      isPause = !isPause;
     });
 
-    if (isPlay) {
-      isIcon = true;
+    if (isPause) {
       videoPlayerController.pause();
     } else {
-      isIcon = false;
       videoPlayerController.play();
     }
   }
@@ -55,9 +51,9 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return InkWell(
+    return GestureDetector(
       onTap: () {
-        OnPause();
+        pause();
       },
       child: Container(
         width: size.width,
@@ -68,14 +64,19 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
         child: Stack(
           children: [
             VideoPlayer(videoPlayerController),
-            isIcon
-                ? const Align(
+            isPause
+                ? Align(
                     alignment: Alignment.center,
-                    child: Icon(
-                      Icons.play_arrow_rounded,
-                      size: 90,
-                    ))
-                : Container()
+                    child: CircleAvatar(
+                      radius: 90,
+                      backgroundColor: Colors.white.withOpacity(0.3),
+                      child: const Icon(
+                        Icons.play_arrow_rounded,
+                        size: 110,
+                      ),
+                    ),
+                  )
+                : const SizedBox()
           ],
         ),
       ),

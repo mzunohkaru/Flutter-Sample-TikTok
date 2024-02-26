@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tiktok_clone/Core/Components/circular_profile_image_view.dart';
 import 'package:tiktok_clone/Core/Profile/ViewModel/profile_view_model.dart';
 import 'package:tiktok_clone/Core/Root/View/splash_view.dart';
-import 'package:tiktok_clone/Model/User/user.dart';
 import 'package:tiktok_clone/Repository/theme_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
 

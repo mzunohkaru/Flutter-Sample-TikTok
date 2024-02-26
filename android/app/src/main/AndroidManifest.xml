@@ -7,7 +7,7 @@
 
 
     <application
-        android:label="tiktok_clone"
+        android:label="TikTok"
         android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">

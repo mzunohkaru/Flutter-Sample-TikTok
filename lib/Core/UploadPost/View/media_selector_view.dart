@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tiktok_clone/Core/UploadPost/View/confirm_view.dart';
@@ -40,7 +38,6 @@ class MediaSelectorView extends StatelessWidget {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => ConfirmView(
-            videoFile: File(video.path),
             videoPath: video.path,
             resetAndNavigateToFeed: resetAndNavigateToFeed
           ),
