@@ -20,5 +20,6 @@ class RegistrationViewModel {
     } on FirebaseAuthException catch (e) {
       return getSignUpErrorMessage(e.code);
     }
+    return null;
   }
 }

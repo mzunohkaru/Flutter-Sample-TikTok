@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 import 'package:tiktok_clone/Core/Auth/Service/auth_service.dart';
+import 'package:tiktok_clone/Serivce/post_service.dart';
+import 'package:tiktok_clone/Serivce/upload_service.dart';
 import 'package:tiktok_clone/Serivce/user_service.dart';
 
-final authService = AuthService.instance;
+final authService = AuthService();
+final uploadService = UploadService();
+final postService = PostService();
 
 final auth = FirebaseAuth.instance;
 final firestore = FirebaseFirestore.instance;

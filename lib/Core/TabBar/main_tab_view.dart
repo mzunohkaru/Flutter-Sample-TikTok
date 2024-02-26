@@ -4,7 +4,6 @@ import 'package:tiktok_clone/Core/Feed/View/feed_view.dart';
 import 'package:tiktok_clone/Core/Notification/View/notification_view.dart';
 import 'package:tiktok_clone/Core/Profile/View/current_profile_view.dart';
 import 'package:tiktok_clone/Core/UploadPost/View/media_selector_view.dart';
-import 'package:tiktok_clone/Core/UploadPost/View/upload_post_view.dart';
 
 class MainTabView extends StatefulWidget {
   const MainTabView({super.key});

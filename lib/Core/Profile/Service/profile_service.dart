@@ -15,7 +15,7 @@ class ProfileService {
 
     /// Firebase Cloud Storageにアップロード
     final storageRef =
-        storage.ref().child('profile/$currentUserUid').putFile(file, metadata);
+        storage.ref().child('profile').child(currentUserUid).putFile(file, metadata);
 
     final snapshot = await storageRef;
     return snapshot.ref.getDownloadURL();

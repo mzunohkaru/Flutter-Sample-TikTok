@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/Model/User/user.dart';
 
@@ -20,7 +19,7 @@ class StatusCell extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Column(
               children: [
                 Text(user!.followers.toString()),

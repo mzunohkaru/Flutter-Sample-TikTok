@@ -23,10 +23,12 @@ mixin _$Post {
   String get postId => throw _privateConstructorUsedError;
   String get ownerUid => throw _privateConstructorUsedError;
   String get caption => throw _privateConstructorUsedError;
-  String get postImageUrl => throw _privateConstructorUsedError;
-  int get likes => throw _privateConstructorUsedError;
+  int get likeCount => throw _privateConstructorUsedError;
   List<dynamic> get likeUsers => throw _privateConstructorUsedError;
+  int get commentCount => throw _privateConstructorUsedError;
   bool get didLike => throw _privateConstructorUsedError;
+  String get videoUrl => throw _privateConstructorUsedError;
+  String get thumbnail => throw _privateConstructorUsedError;
   @TimestampConverter()
   Timestamp get createAt => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
@@ -45,10 +47,12 @@ abstract class $PostCopyWith<$Res> {
       {String postId,
       String ownerUid,
       String caption,
-      String postImageUrl,
-      int likes,
+      int likeCount,
       List<dynamic> likeUsers,
+      int commentCount,
       bool didLike,
+      String videoUrl,
+      String thumbnail,
       @TimestampConverter() Timestamp createAt,
       User? user});
 
@@ -71,10 +75,12 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
     Object? postId = null,
     Object? ownerUid = null,
     Object? caption = null,
-    Object? postImageUrl = null,
-    Object? likes = null,
+    Object? likeCount = null,
     Object? likeUsers = null,
+    Object? commentCount = null,
     Object? didLike = null,
+    Object? videoUrl = null,
+    Object? thumbnail = null,
     Object? createAt = null,
     Object? user = freezed,
   }) {
@@ -91,22 +97,30 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
               as String,
-      postImageUrl: null == postImageUrl
-          ? _value.postImageUrl
-          : postImageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      likes: null == likes
-          ? _value.likes
-          : likes // ignore: cast_nullable_to_non_nullable
+      likeCount: null == likeCount
+          ? _value.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
               as int,
       likeUsers: null == likeUsers
           ? _value.likeUsers
           : likeUsers // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      commentCount: null == commentCount
+          ? _value.commentCount
+          : commentCount // ignore: cast_nullable_to_non_nullable
+              as int,
       didLike: null == didLike
           ? _value.didLike
           : didLike // ignore: cast_nullable_to_non_nullable
               as bool,
+      videoUrl: null == videoUrl
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnail: null == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String,
       createAt: null == createAt
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
@@ -142,10 +156,12 @@ abstract class _$$PostImplCopyWith<$Res> implements $PostCopyWith<$Res> {
       {String postId,
       String ownerUid,
       String caption,
-      String postImageUrl,
-      int likes,
+      int likeCount,
       List<dynamic> likeUsers,
+      int commentCount,
       bool didLike,
+      String videoUrl,
+      String thumbnail,
       @TimestampConverter() Timestamp createAt,
       User? user});
 
@@ -166,10 +182,12 @@ class __$$PostImplCopyWithImpl<$Res>
     Object? postId = null,
     Object? ownerUid = null,
     Object? caption = null,
-    Object? postImageUrl = null,
-    Object? likes = null,
+    Object? likeCount = null,
     Object? likeUsers = null,
+    Object? commentCount = null,
     Object? didLike = null,
+    Object? videoUrl = null,
+    Object? thumbnail = null,
     Object? createAt = null,
     Object? user = freezed,
   }) {
@@ -186,22 +204,30 @@ class __$$PostImplCopyWithImpl<$Res>
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
               as String,
-      postImageUrl: null == postImageUrl
-          ? _value.postImageUrl
-          : postImageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      likes: null == likes
-          ? _value.likes
-          : likes // ignore: cast_nullable_to_non_nullable
+      likeCount: null == likeCount
+          ? _value.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
               as int,
       likeUsers: null == likeUsers
           ? _value._likeUsers
           : likeUsers // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      commentCount: null == commentCount
+          ? _value.commentCount
+          : commentCount // ignore: cast_nullable_to_non_nullable
+              as int,
       didLike: null == didLike
           ? _value.didLike
           : didLike // ignore: cast_nullable_to_non_nullable
               as bool,
+      videoUrl: null == videoUrl
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnail: null == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String,
       createAt: null == createAt
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
@@ -221,10 +247,12 @@ class _$PostImpl implements _Post {
       {required this.postId,
       required this.ownerUid,
       required this.caption,
-      required this.postImageUrl,
-      required this.likes,
+      required this.likeCount,
       required final List<dynamic> likeUsers,
+      required this.commentCount,
       required this.didLike,
+      required this.videoUrl,
+      required this.thumbnail,
       @TimestampConverter() required this.createAt,
       required this.user})
       : _likeUsers = likeUsers;
@@ -239,9 +267,7 @@ class _$PostImpl implements _Post {
   @override
   final String caption;
   @override
-  final String postImageUrl;
-  @override
-  final int likes;
+  final int likeCount;
   final List<dynamic> _likeUsers;
   @override
   List<dynamic> get likeUsers {
@@ -251,7 +277,13 @@ class _$PostImpl implements _Post {
   }
 
   @override
+  final int commentCount;
+  @override
   final bool didLike;
+  @override
+  final String videoUrl;
+  @override
+  final String thumbnail;
   @override
   @TimestampConverter()
   final Timestamp createAt;
@@ -260,7 +292,7 @@ class _$PostImpl implements _Post {
 
   @override
   String toString() {
-    return 'Post(postId: $postId, ownerUid: $ownerUid, caption: $caption, postImageUrl: $postImageUrl, likes: $likes, likeUsers: $likeUsers, didLike: $didLike, createAt: $createAt, user: $user)';
+    return 'Post(postId: $postId, ownerUid: $ownerUid, caption: $caption, likeCount: $likeCount, likeUsers: $likeUsers, commentCount: $commentCount, didLike: $didLike, videoUrl: $videoUrl, thumbnail: $thumbnail, createAt: $createAt, user: $user)';
   }
 
   @override
@@ -272,12 +304,17 @@ class _$PostImpl implements _Post {
             (identical(other.ownerUid, ownerUid) ||
                 other.ownerUid == ownerUid) &&
             (identical(other.caption, caption) || other.caption == caption) &&
-            (identical(other.postImageUrl, postImageUrl) ||
-                other.postImageUrl == postImageUrl) &&
-            (identical(other.likes, likes) || other.likes == likes) &&
+            (identical(other.likeCount, likeCount) ||
+                other.likeCount == likeCount) &&
             const DeepCollectionEquality()
                 .equals(other._likeUsers, _likeUsers) &&
+            (identical(other.commentCount, commentCount) ||
+                other.commentCount == commentCount) &&
             (identical(other.didLike, didLike) || other.didLike == didLike) &&
+            (identical(other.videoUrl, videoUrl) ||
+                other.videoUrl == videoUrl) &&
+            (identical(other.thumbnail, thumbnail) ||
+                other.thumbnail == thumbnail) &&
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
             (identical(other.user, user) || other.user == user));
@@ -290,10 +327,12 @@ class _$PostImpl implements _Post {
       postId,
       ownerUid,
       caption,
-      postImageUrl,
-      likes,
+      likeCount,
       const DeepCollectionEquality().hash(_likeUsers),
+      commentCount,
       didLike,
+      videoUrl,
+      thumbnail,
       createAt,
       user);
 
@@ -316,10 +355,12 @@ abstract class _Post implements Post {
       {required final String postId,
       required final String ownerUid,
       required final String caption,
-      required final String postImageUrl,
-      required final int likes,
+      required final int likeCount,
       required final List<dynamic> likeUsers,
+      required final int commentCount,
       required final bool didLike,
+      required final String videoUrl,
+      required final String thumbnail,
       @TimestampConverter() required final Timestamp createAt,
       required final User? user}) = _$PostImpl;
 
@@ -332,13 +373,17 @@ abstract class _Post implements Post {
   @override
   String get caption;
   @override
-  String get postImageUrl;
-  @override
-  int get likes;
+  int get likeCount;
   @override
   List<dynamic> get likeUsers;
   @override
+  int get commentCount;
+  @override
   bool get didLike;
+  @override
+  String get videoUrl;
+  @override
+  String get thumbnail;
   @override
   @TimestampConverter()
   Timestamp get createAt;

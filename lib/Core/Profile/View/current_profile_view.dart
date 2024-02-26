@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktok_clone/Core/Components/circular_profile_image_view.dart';
+import 'package:tiktok_clone/Core/Profile/Component/profile_liked_post_cell.dart';
+import 'package:tiktok_clone/Core/Profile/Component/profile_post_cell.dart';
+import 'package:tiktok_clone/Core/Profile/Component/status_cell.dart';
 import 'package:tiktok_clone/Core/Profile/View/edit_profile_view.dart';
 import 'package:tiktok_clone/Core/Profile/View/settings_view.dart';
-import 'package:tiktok_clone/Core/Profile/View/status_cell.dart';
 import 'package:tiktok_clone/Core/Profile/ViewModel/profile_view_model.dart';
 import 'package:tiktok_clone/Repository/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
@@ -17,6 +19,7 @@ class CurrentProfileView extends ConsumerWidget {
     final currentUserUid = ref.watch(currentUserNotifierProvider);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
         title: const Text("Profile", style: kAppBarTitleTextStyle),
@@ -92,56 +95,38 @@ class CurrentProfileView extends ConsumerWidget {
                         height: 8,
                       ),
                       const Divider(),
-                      user.post!.isNotEmpty
-                          ? Flexible(
-                              child: GridView.builder(
-                                itemCount: user.post!.length,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,
-                                  crossAxisSpacing: 1.0,
-                                  mainAxisSpacing: 1.0,
-                                  childAspectRatio: 0.7,
-                                ),
-                                itemBuilder: (context, index) {
-                                  final userPost = user.post![index];
-                                  return GestureDetector(
-                                    onTap: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                              userPost.postImageUrl,
-                                            ),
-                                            fit: BoxFit.cover),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            )
-                          : const Center(
-                              child: Column(
-                                children: [
-                                  Icon(
-                                    Icons.post_add,
-                                    size: 80,
-                                  ),
-                                  Text(
-                                    "No Posts",
-                                    style: TextStyle(
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    "New posts you receive will appear here.",
-                                    style: TextStyle(
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.w200),
-                                  ),
+                      Flexible(
+                        child: DefaultTabController(
+                          length: 2,
+                          child: Column(
+                            children: <Widget>[
+                              const TabBar(
+                                tabs: [
+                                  Tab(text: "Posts"),
+                                  Tab(text: "Likes"),
                                 ],
                               ),
-                            ),
+                              Expanded(
+                                child: TabBarView(
+                                  children: [
+                                    // 1ページ目
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8),
+                                      child: ProfilePostCell(user: user),
+                                    ),
+
+                                    // 2ページ目
+                                    const Padding(
+                                      padding: EdgeInsets.only(top: 8),
+                                      child: ProfileLikedPostCell(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   );
                 } else if (snapshot.hasError) {
