@@ -18,6 +18,7 @@ class FeedView extends HookConsumerWidget {
           return posts.isNotEmpty
               ? PageView.builder(
                   itemCount: posts.length,
+                  // viewportFraction : ユーザーが一度に見ることができる画面の領域に対してページがどの程度の幅を占めるかを指定
                   controller:
                       PageController(initialPage: 0, viewportFraction: 1),
                   scrollDirection: Axis.vertical,

@@ -20,7 +20,7 @@ class _MainTabViewState extends State<MainTabView> {
   void initState() {
     super.initState();
     _widgetOptions = [
-      FeedView(),
+      const FeedView(),
       const ExploreView(),
       MediaSelectorView(resetAndNavigateToFeed: resetAndNavigateToFeed),
       NotificationView(),

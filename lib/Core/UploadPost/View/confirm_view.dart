@@ -10,13 +10,11 @@ import 'package:tiktok_clone/Widgets/video_player_item_widget.dart';
 
 class ConfirmView extends HookConsumerWidget {
   final String videoPath;
-  final Function resetAndNavigateToFeed;
   final viewModel = UploadPostViewModel();
 
   ConfirmView(
       {super.key,
-      required this.videoPath,
-      required this.resetAndNavigateToFeed});
+      required this.videoPath});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -68,9 +66,7 @@ class ConfirmView extends HookConsumerWidget {
                               MaterialPageRoute(
                                 builder: (context) => UploadPostView(
                                     videoFile: File(videoPath),
-                                    videoThumbnailFile: videoThumbnailFile,
-                                    resetAndNavigateToFeed:
-                                        resetAndNavigateToFeed),
+                                    videoThumbnailFile: videoThumbnailFile),
                               ),
                             );
                           }

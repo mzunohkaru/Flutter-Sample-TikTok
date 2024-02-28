@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tiktok_clone/Core/Components/circular_profile_image_view.dart';
+import 'package:tiktok_clone/Core/Feed/View/feed_details_view.dart';
 import 'package:tiktok_clone/Core/Profile/Component/status_cell.dart';
 import 'package:tiktok_clone/Core/Profile/View/edit_profile_view.dart';
 import 'package:tiktok_clone/Core/Profile/ViewModel/profile_view_model.dart';
@@ -148,7 +149,13 @@ class ProfileView extends HookConsumerWidget {
                               itemBuilder: (context, index) {
                                 final userPost = user.post![index];
                                 return GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                FeedDetailsView(
+                                                    post: userPost)));
+                                  },
                                   child: Container(
                                     decoration: BoxDecoration(
                                       image: DecorationImage(

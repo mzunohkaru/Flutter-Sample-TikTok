@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tiktok_clone/Core/Feed/View/feed_details_view.dart';
 import 'package:tiktok_clone/Core/Profile/Component/no_posts_cell.dart';
 import 'package:tiktok_clone/Repository/UserProvider/user_liked_post_provider.dart';
 
@@ -26,7 +27,10 @@ class ProfileLikedPostCell extends HookConsumerWidget {
                   itemBuilder: (context, index) {
                     final post = posts[index];
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => FeedDetailsView(post: post)));
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius:

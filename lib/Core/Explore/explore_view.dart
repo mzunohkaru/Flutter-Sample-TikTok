@@ -38,7 +38,8 @@ class ExploreView extends HookConsumerWidget {
         if (query.isNotEmpty) {
           searchUsers.value = allUsers
               .where((user) =>
-                  user.username.toLowerCase().contains(query.toLowerCase()))
+                  user.username.toLowerCase().contains(query.toLowerCase()) || 
+                  user.address.toLowerCase().contains(query.toLowerCase()))
               .toList()
               .cast<User>();
           logger.i(
@@ -60,6 +61,7 @@ class ExploreView extends HookConsumerWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
             title: const Text(
               'Explore',

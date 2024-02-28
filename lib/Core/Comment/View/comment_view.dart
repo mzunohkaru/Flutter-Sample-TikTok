@@ -140,7 +140,7 @@ class CommentView extends HookConsumerWidget {
                     ? () async {
                         await viewModel.comment(
                             ref: ref,
-                            postId: post.postId,
+                            post: post,
                             commentText: commentController.text);
                         reset();
                       }
