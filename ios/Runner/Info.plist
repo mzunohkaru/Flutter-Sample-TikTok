@@ -45,36 +45,28 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-
-
-	<!-- Image Picker -->
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>このアプリでは写真を選択するためにフォトライブラリへのアクセスが必要です。</string>
 	<key>NSCameraUsageDescription</key>
 	<string>このアプリでは写真撮影のためにカメラへのアクセスが必要です。</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>このアプリではビデオ録画のためにマイクへのアクセスが必要です。</string>
-
-	<!-- Video Player -->
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>example.com</key>
 			<dict>
-				<!-- HTTP接続を許可 -->
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
-				<!-- 最小限のTLSバージョンを指定 (オプション) -->
 				<key>NSExceptionMinimumTLSVersion</key>
 				<string>TLSv1.2</string>
-				<!-- ドメインがリダイレクトを要求する場合に必要 (オプション) -->
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
 			</dict>
 		</dict>
 	</dict>
-
-
 </dict>
 </plist>

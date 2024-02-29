@@ -7,6 +7,7 @@ class NoPostsCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             Icons.post_add,
