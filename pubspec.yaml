@@ -41,6 +41,7 @@ dependencies:
 
   # ファイル
   image_picker: any
+  flutter_image_compress: any
   timeago: any
   video_compress: ^3.1.2
   video_player: any
