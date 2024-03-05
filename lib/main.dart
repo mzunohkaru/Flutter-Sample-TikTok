@@ -3,12 +3,9 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:timeago/timeago.dart' as timeAgo;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tiktok_clone/Core/Auth/View/login_view.dart';
-import 'package:tiktok_clone/Core/Profile/View/current_profile_view.dart';
 import 'package:tiktok_clone/Core/Root/View/splash_view.dart';
-import 'package:tiktok_clone/Core/TabBar/main_tab_view.dart';
-import 'package:tiktok_clone/Core/UploadPost/View/media_selector_view.dart';
 import 'package:tiktok_clone/Repository/theme_provider.dart';
 import 'package:tiktok_clone/firebase_options.dart';
 
@@ -20,6 +17,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  timeAgo.setLocaleMessages("ja", timeAgo.JaMessages());
+
   runApp(
     ProviderScope(
       child: MyApp(),
@@ -50,7 +49,7 @@ class MyApp extends ConsumerWidget {
         useMaterial3: true,
         typography: Typography.material2021(platform: defaultTargetPlatform),
       ),
-      home: SplashView(),
+      home: const SplashView(),
     );
   }
 }
