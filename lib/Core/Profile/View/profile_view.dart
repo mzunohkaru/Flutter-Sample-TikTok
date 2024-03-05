@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tiktok_clone/Core/Components/circular_profile_image_view.dart';
+import 'package:tiktok_clone/Core/Profile/Component/no_posts_cell.dart';
 import 'package:tiktok_clone/Core/Profile/Component/status_cell.dart';
 import 'package:tiktok_clone/Core/Profile/View/edit_profile_view.dart';
 import 'package:tiktok_clone/Core/Profile/ViewModel/profile_view_model.dart';
@@ -162,28 +163,7 @@ class ProfileView extends HookConsumerWidget {
                               },
                             ),
                           )
-                        : const Center(
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.post_add,
-                                  size: 80,
-                                ),
-                                Text(
-                                  "No Posts",
-                                  style: TextStyle(
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  "New posts you receive will appear here.",
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w200),
-                                ),
-                              ],
-                            ),
-                          ),
+                        : const NoPostsCell()
                   ],
                 );
               } else if (snapshot.hasError) {
