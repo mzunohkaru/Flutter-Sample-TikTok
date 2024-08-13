@@ -5,8 +5,9 @@ import 'package:tiktok_clone/Core/Profile/Service/profile_service.dart';
 import 'package:tiktok_clone/Model/Notification/notification.dart';
 import 'package:tiktok_clone/Model/Post/post.dart';
 import 'package:tiktok_clone/Model/User/user.dart';
-import 'package:tiktok_clone/Provider/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
+
+import '../../../Usecase/Auth/BaseAuthenticatedUsecase/base_authenticated_usecase_impl.dart';
 
 class ProfileViewModel {
   Future<User?> fetchUser({required String userId}) async {
@@ -54,10 +55,8 @@ class ProfileViewModel {
     logger.d("Call: ProfileViewModel updateProfile");
 
     try {
-      final currentUserUid = ref.watch(currentUserNotifierProvider);
-      if (currentUserUid == null) {
-        throw Exception('DEBUG: Not found user ID');
-      }
+      final currentUserUid =
+          ref.watch(baseAuthenticatedUsecaseProvider).getCurrentUserId();
 
       await ProfileService().updateProfileData(
         currentUserUid: currentUserUid,
@@ -74,16 +73,14 @@ class ProfileViewModel {
     logger.d("Call: ProfileViewModel signOut");
 
     await authService.signOut();
-    ref.read(currentUserNotifierProvider.notifier).logOutUser();
+    ref.watch(baseAuthenticatedUsecaseProvider).signOut();
   }
 
   Future follow({required WidgetRef ref, required String uid}) async {
     logger.d("Call: ProfileViewModel follow");
 
-    final currentUserUid = ref.watch(currentUserNotifierProvider);
-    if (currentUserUid == null) {
-      throw Exception('DEBUG: Not found user ID');
-    }
+    final currentUserUid =
+        ref.watch(baseAuthenticatedUsecaseProvider).getCurrentUserId();
 
     try {
       await userService.follow(currentUserUid: currentUserUid, uid: uid);
@@ -103,10 +100,9 @@ class ProfileViewModel {
   Future unfollow({required WidgetRef ref, required String uid}) async {
     logger.d("Call: ProfileViewModel unfollow");
 
-    final currentUserUid = ref.watch(currentUserNotifierProvider);
-    if (currentUserUid == null) {
-      throw Exception('DEBUG: Not found user ID');
-    }
+    final currentUserUid =
+        ref.watch(baseAuthenticatedUsecaseProvider).getCurrentUserId();
+
     try {
       await userService.unfollow(currentUserUid: currentUserUid, uid: uid);
     } catch (e) {

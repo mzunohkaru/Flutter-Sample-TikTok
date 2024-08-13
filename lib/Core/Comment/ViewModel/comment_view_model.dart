@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktok_clone/Model/Notification/notification.dart';
 import 'package:tiktok_clone/Model/Post/post.dart';
-import 'package:tiktok_clone/Provider/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
+
+import '../../../Usecase/Auth/BaseAuthenticatedUsecase/base_authenticated_usecase_impl.dart';
 
 class CommentViewModel {
   Future<void> comment(
@@ -12,10 +13,7 @@ class CommentViewModel {
     logger.d("Call: CommentViewModel comment");
 
     try {
-      final currentUserUid = ref.watch(currentUserNotifierProvider);
-      if (currentUserUid == null) {
-        throw Exception('DEBUG: Not found user ID');
-      }
+      final currentUserUid = ref.watch(baseAuthenticatedUsecaseProvider).getCurrentUserId();
 
       await postService.comment(
           postId: post.postId,

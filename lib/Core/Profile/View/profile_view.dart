@@ -8,8 +8,9 @@ import 'package:tiktok_clone/Core/Profile/Component/status_cell.dart';
 import 'package:tiktok_clone/Core/Profile/View/edit_profile_view.dart';
 import 'package:tiktok_clone/Core/Profile/ViewModel/profile_view_model.dart';
 import 'package:tiktok_clone/Model/User/user.dart';
-import 'package:tiktok_clone/Provider/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
+
+import '../../../Usecase/Auth/BaseAuthenticatedUsecase/base_authenticated_usecase_impl.dart';
 
 class ProfileView extends HookConsumerWidget {
   final User user;
@@ -19,7 +20,8 @@ class ProfileView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentUserUid = ref.watch(currentUserNotifierProvider);
+    final currentUserUid =
+        ref.watch(baseAuthenticatedUsecaseProvider).getCurrentUserId();
     final follow = useState<bool?>(null);
 
     useEffect(() {

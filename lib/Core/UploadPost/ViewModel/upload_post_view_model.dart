@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tiktok_clone/Provider/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
+
+import '../../../Usecase/Auth/BaseAuthenticatedUsecase/base_authenticated_usecase_impl.dart';
 
 class UploadPostViewModel {
   Future<void> uploadPost(
@@ -12,10 +13,7 @@ class UploadPostViewModel {
       required File videoThumbnailFile}) async {
     logger.d("Call: UploadPostViewModel uploadPost");
 
-    final currentUserUid = ref.watch(currentUserNotifierProvider);
-    if (currentUserUid == null) {
-      throw Exception('DEBUG: Not found user ID');
-    }
+    final currentUserUid = ref.watch(baseAuthenticatedUsecaseProvider).getCurrentUserId();
 
     try {
       await uploadService.uploadVideo(

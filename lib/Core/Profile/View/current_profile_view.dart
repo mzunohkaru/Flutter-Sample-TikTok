@@ -7,8 +7,9 @@ import 'package:tiktok_clone/Core/Profile/Component/status_cell.dart';
 import 'package:tiktok_clone/Core/Profile/View/edit_profile_view.dart';
 import 'package:tiktok_clone/Core/Profile/View/settings_view.dart';
 import 'package:tiktok_clone/Core/Profile/ViewModel/profile_view_model.dart';
-import 'package:tiktok_clone/Provider/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
+
+import '../../../Usecase/Auth/BaseAuthenticatedUsecase/base_authenticated_usecase_impl.dart';
 
 class CurrentProfileView extends ConsumerWidget {
   final viewModel = ProfileViewModel();
@@ -16,7 +17,7 @@ class CurrentProfileView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentUserUid = ref.watch(currentUserNotifierProvider);
+    final currentUserUid = ref.watch(baseAuthenticatedUsecaseProvider).getCurrentUserId();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
