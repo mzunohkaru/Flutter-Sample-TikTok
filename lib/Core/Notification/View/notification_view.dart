@@ -5,7 +5,7 @@ import 'package:tiktok_clone/Core/Feed/View/feed_details_view.dart';
 import 'package:tiktok_clone/Core/Notification/ViewModel/notification_view_model.dart';
 import 'package:tiktok_clone/Core/Profile/View/profile_view.dart';
 import 'package:tiktok_clone/Model/Notification/notification.dart';
-import 'package:tiktok_clone/Repository/NotificationProvider/notification_provider.dart';
+import 'package:tiktok_clone/Provider/NotificationProvider/notification_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
 import 'package:tiktok_clone/Utils/format_date.dart';
 

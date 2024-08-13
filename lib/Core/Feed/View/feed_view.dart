@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tiktok_clone/Core/Feed/View/feed_cell.dart';
 import 'package:tiktok_clone/Core/Profile/Component/no_posts_cell.dart';
-import 'package:tiktok_clone/Repository/PostProvider/post_provider.dart';
+import 'package:tiktok_clone/Provider/PostProvider/post_provider.dart';
 
 class FeedView extends HookConsumerWidget {
   const FeedView({super.key});

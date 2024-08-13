@@ -7,7 +7,7 @@ import 'package:tiktok_clone/Core/Profile/Component/status_cell.dart';
 import 'package:tiktok_clone/Core/Profile/View/edit_profile_view.dart';
 import 'package:tiktok_clone/Core/Profile/ViewModel/profile_view_model.dart';
 import 'package:tiktok_clone/Model/User/user.dart';
-import 'package:tiktok_clone/Repository/UserProvider/current_user_provider.dart';
+import 'package:tiktok_clone/Provider/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
 
 class ProfileView extends HookConsumerWidget {

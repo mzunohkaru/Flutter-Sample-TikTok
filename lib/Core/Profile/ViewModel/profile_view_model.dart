@@ -5,7 +5,7 @@ import 'package:tiktok_clone/Core/Profile/Service/profile_service.dart';
 import 'package:tiktok_clone/Model/Notification/notification.dart';
 import 'package:tiktok_clone/Model/Post/post.dart';
 import 'package:tiktok_clone/Model/User/user.dart';
-import 'package:tiktok_clone/Repository/UserProvider/current_user_provider.dart';
+import 'package:tiktok_clone/Provider/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
 
 class ProfileViewModel {
