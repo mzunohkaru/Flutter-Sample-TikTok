@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 import 'package:tiktok_clone/Core/Auth/Service/auth_service.dart';
+import 'package:tiktok_clone/Core/Notification/Service/notification_service.dart';
 import 'package:tiktok_clone/Serivce/post_service.dart';
 import 'package:tiktok_clone/Serivce/upload_service.dart';
 import 'package:tiktok_clone/Serivce/user_service.dart';
@@ -11,6 +12,7 @@ import 'package:tiktok_clone/Serivce/user_service.dart';
 final authService = AuthService();
 final uploadService = UploadService();
 final postService = PostService();
+final notificationService = NotificationService();
 
 final auth = FirebaseAuth.instance;
 final firestore = FirebaseFirestore.instance;
@@ -21,6 +23,8 @@ final PostCollections = firestore.collection('posts');
 
 final FollowingCollections = firestore.collection("following");
 final FollowerCollections = firestore.collection("followers");
+
+final NotificationCollections = firestore.collection('notifications');
 
 final userService = UserService();
 

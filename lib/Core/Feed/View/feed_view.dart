@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tiktok_clone/Core/Feed/View/feed_cell.dart';
 import 'package:tiktok_clone/Core/Profile/Component/no_posts_cell.dart';
-import 'package:tiktok_clone/Repository/PostProvider/post_provider.dart';
+import 'package:tiktok_clone/Provider/PostProvider/post_provider.dart';
 
 class FeedView extends HookConsumerWidget {
   const FeedView({super.key});
@@ -18,6 +18,7 @@ class FeedView extends HookConsumerWidget {
           return posts.isNotEmpty
               ? PageView.builder(
                   itemCount: posts.length,
+                  // viewportFraction : ユーザーが一度に見ることができる画面の領域に対してページがどの程度の幅を占めるかを指定
                   controller:
                       PageController(initialPage: 0, viewportFraction: 1),
                   scrollDirection: Axis.vertical,

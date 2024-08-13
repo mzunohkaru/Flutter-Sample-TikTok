@@ -16,7 +16,7 @@ class PostNotifier extends _$PostNotifier {
     yield* postCollection.snapshots().map((snapshot) async {
       try {
         final posts = await Future.wait(snapshot.docs.map((doc) async {
-          final postData = doc.data() as Map<String, dynamic>;
+          final postData = doc.data();
           final ownerUid = postData['ownerUid'];
           final userDoc = await userCollection.doc(ownerUid).get();
           final userData = userDoc.data();
@@ -27,6 +27,7 @@ class PostNotifier extends _$PostNotifier {
               postData['likeUsers']?.contains(currentUserUid) ?? false;
           return post.copyWith(didLike: didLike);
         }));
+        posts.shuffle(); // リストの順番をシャッフル
         return posts.toList();
       } catch (e) {
         // エラーハンドリング

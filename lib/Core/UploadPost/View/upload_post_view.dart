@@ -10,14 +10,12 @@ import 'package:tiktok_clone/Utils/constants.dart';
 class UploadPostView extends HookConsumerWidget {
   final File videoFile;
   final File videoThumbnailFile;
-  final Function resetAndNavigateToFeed;
   final viewModel = UploadPostViewModel();
 
   UploadPostView(
       {super.key,
       required this.videoFile,
-      required this.videoThumbnailFile,
-      required this.resetAndNavigateToFeed});
+      required this.videoThumbnailFile});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,7 +36,6 @@ class UploadPostView extends HookConsumerWidget {
 
     void reset() {
       captionController.clear();
-      // resetAndNavigateToFeed();
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const MainTabView(),

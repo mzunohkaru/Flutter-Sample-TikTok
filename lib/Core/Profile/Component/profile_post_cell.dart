@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:tiktok_clone/Core/Feed/View/feed_details_view.dart';
 import 'package:tiktok_clone/Core/Profile/Component/no_posts_cell.dart';
 import 'package:tiktok_clone/Model/User/user.dart';
 
@@ -22,7 +23,10 @@ class ProfilePostCell extends HookWidget {
             itemBuilder: (context, index) {
               final userPost = user.post![index];
               return GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => FeedDetailsView(post: userPost)));
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(6)),

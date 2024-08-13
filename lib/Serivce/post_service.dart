@@ -52,7 +52,7 @@ class PostService {
     final postOwnerUid =
         (await PostCollections.doc(postId).get()).data()!['ownerUid'];
     await UserCollections.doc(postOwnerUid)
-        .update({'likes': FieldValue.increment(1)});
+        .update({'likes': postLikeCount + 1});
   }
 
   Future unlike(
@@ -69,6 +69,6 @@ class PostService {
     final postOwnerUid =
         (await PostCollections.doc(postId).get()).data()!['ownerUid'];
     await UserCollections.doc(postOwnerUid)
-        .update({'likes': FieldValue.increment(-1)});
+        .update({'likes': postLikeCount - 1});
   }
 }

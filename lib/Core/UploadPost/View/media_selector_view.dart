@@ -38,8 +38,7 @@ class MediaSelectorView extends StatelessWidget {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => ConfirmView(
-            videoPath: video.path,
-            resetAndNavigateToFeed: resetAndNavigateToFeed
+            videoPath: video.path
           ),
         ),
       );

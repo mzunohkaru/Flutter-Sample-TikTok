@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tiktok_clone/Core/Comment/ViewModel/comment_view_model.dart';
 import 'package:tiktok_clone/Core/Components/circular_profile_image_view.dart';
 import 'package:tiktok_clone/Model/Post/post.dart';
-import 'package:tiktok_clone/Repository/PostProvider/post_comment_provider.dart';
+import 'package:tiktok_clone/Provider/PostProvider/post_comment_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
 import 'package:tiktok_clone/Utils/format_date.dart';
 
@@ -141,7 +141,7 @@ class CommentView extends HookConsumerWidget {
                     ? () async {
                         await viewModel.comment(
                             ref: ref,
-                            postId: post.postId,
+                            post: post,
                             commentText: commentController.text);
                         reset();
                       }

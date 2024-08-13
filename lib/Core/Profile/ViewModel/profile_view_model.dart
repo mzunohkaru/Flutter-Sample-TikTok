@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktok_clone/Core/Profile/Service/profile_service.dart';
+import 'package:tiktok_clone/Model/Notification/notification.dart';
 import 'package:tiktok_clone/Model/Post/post.dart';
 import 'package:tiktok_clone/Model/User/user.dart';
-import 'package:tiktok_clone/Repository/UserProvider/current_user_provider.dart';
+import 'package:tiktok_clone/Provider/UserProvider/current_user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
 
 class ProfileViewModel {
@@ -84,7 +85,19 @@ class ProfileViewModel {
       throw Exception('DEBUG: Not found user ID');
     }
 
-    await userService.follow(currentUserUid: currentUserUid, uid: uid);
+    try {
+      await userService.follow(currentUserUid: currentUserUid, uid: uid);
+
+      await notificationService.uploadNotification(
+          currentUserUid: currentUserUid,
+          toUid: uid,
+          type: NotificationType.follow,
+          post: null);
+    } catch (e) {
+      logger.e("DEBUG: Failed to follow process or notification upload",
+          error: e);
+      throw Exception('Failed to follow process or notification upload');
+    }
   }
 
   Future unfollow({required WidgetRef ref, required String uid}) async {
@@ -94,7 +107,13 @@ class ProfileViewModel {
     if (currentUserUid == null) {
       throw Exception('DEBUG: Not found user ID');
     }
-    await userService.unfollow(currentUserUid: currentUserUid, uid: uid);
+    try {
+      await userService.unfollow(currentUserUid: currentUserUid, uid: uid);
+    } catch (e) {
+      logger.e("DEBUG: Failed to unfollow process or notification upload",
+          error: e);
+      throw Exception('Failed to unfollow process or notification upload');
+    }
   }
 
   Future<bool> checkIfUserFollowed({required String uid}) async {

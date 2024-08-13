@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tiktok_clone/Core/Profile/View/profile_view.dart';
 import 'package:tiktok_clone/Model/User/user.dart';
-import 'package:tiktok_clone/Repository/UserProvider/user_provider.dart';
+import 'package:tiktok_clone/Provider/UserProvider/user_provider.dart';
 import 'package:tiktok_clone/Utils/constants.dart';
 
 class ExploreView extends HookConsumerWidget {
@@ -38,7 +38,8 @@ class ExploreView extends HookConsumerWidget {
         if (query.isNotEmpty) {
           searchUsers.value = allUsers
               .where((user) =>
-                  user.username.toLowerCase().contains(query.toLowerCase()))
+                  user.username.toLowerCase().contains(query.toLowerCase()) || 
+                  user.address.toLowerCase().contains(query.toLowerCase()))
               .toList()
               .cast<User>();
           logger.i(
@@ -60,6 +61,7 @@ class ExploreView extends HookConsumerWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
             title: const Text(
               'Explore',
