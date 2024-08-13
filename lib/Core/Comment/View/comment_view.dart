@@ -47,6 +47,7 @@ class CommentView extends HookConsumerWidget {
               if (comments.isEmpty) {
                 return const Center(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         Icons.post_add,
