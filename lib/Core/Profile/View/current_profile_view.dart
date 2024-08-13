@@ -42,7 +42,7 @@ class CurrentProfileView extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: FutureBuilder(
-            future: viewModel.fetchUser(userId: currentUserUid!),
+            future: viewModel.fetchUser(userId: currentUserUid),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasData) {
