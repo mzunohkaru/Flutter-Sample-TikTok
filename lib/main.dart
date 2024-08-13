@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktok_clone/Core/Root/View/splash_view.dart';
-import 'package:tiktok_clone/Repository/theme_provider.dart';
+import 'package:tiktok_clone/Provider/theme_provider.dart';
 import 'package:tiktok_clone/firebase_options.dart';
 
 void main() async {
